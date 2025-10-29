@@ -10,14 +10,22 @@ namespace ADSPortEx2
 
     class VideoGame : IComparable
     {
+        private string title;
+        private string developer;
+        private int releaseYear;
+
         public VideoGame()
         {
-            throw new NotImplementedException();
+            Title = "DEFAULT TITLE";
+            Developer = "DEFAULT DEVELOPER";
+            Releaseyear = 0;
         }
 
         public VideoGame(string title, string developer, int releaseyear)
         {
-            throw new NotImplementedException();
+            Title = title;
+            Developer = developer;
+            Releaseyear = releaseyear;
         }
 
         public string Title
