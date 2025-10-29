@@ -30,20 +30,53 @@ namespace ADSPortEx2
 
         public string Title
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get 
+            { 
+                return title; 
+            }
+
+            set 
+            {
+                if ((value == null)||(value == ""))
+                {
+                    throw new ArgumentException("Title Cannot be Null or Empty");
+                }
+                title = value; 
+            }
         }
 
         public string Developer
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get 
+            { 
+                return developer; 
+            }
+
+            set
+            {
+                if ((value == null) || (value == ""))
+                {
+                    throw new ArgumentException("Developer Cannot be Null or Empty");
+                }
+                developer = value;
+            }
         }
 
         public int Releaseyear
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get 
+            { 
+                return releaseYear; 
+            }
+
+            set 
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Year Cannot be less than 0");
+                }
+                releaseYear = value;
+            }
         }
 
         public int CompareTo(object obj)
