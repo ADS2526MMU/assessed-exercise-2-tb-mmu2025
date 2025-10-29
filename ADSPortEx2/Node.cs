@@ -14,17 +14,37 @@ namespace ADSPortEx2
 
     class Node<T> where T : IComparable
     {
+        T data;
+        Node<T> left, right;
 
         public Node(T item)
         {
-            throw new NotImplementedException();
+            data = item;
+            left = null;
+            right = null;
         }
 
         public T Data
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return data; }
+            set { data = value; }
         }
 
+        public Node<T> Left
+        {
+            get { return left; }
+            set { left = value; }
+        }
+
+        public Node<T> Right
+        {
+            get { return right; }   
+            set { right = value; }
+        }
+
+        public override string ToString()
+        {
+            return data.ToString();
+        }
     } // End of class
 }
