@@ -42,6 +42,11 @@ namespace ADSPortEx2
             set { right = value; }
         }
 
+        public bool IsLeaf()
+        {
+            return left != null && right != null;
+        }
+
         public override string ToString()
         {
             return data.ToString();
