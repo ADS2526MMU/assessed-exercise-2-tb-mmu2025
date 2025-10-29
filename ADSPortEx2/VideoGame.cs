@@ -81,7 +81,11 @@ namespace ADSPortEx2
 
         public int CompareTo(object obj)
         {
-            throw new NotImplementedException();
+            if (obj is VideoGame other)
+            {
+                return Title.CompareTo(other.Title);
+            }
+            throw new ArgumentException("Paramater Must be of type VideoGame");
         }
 
     }// End of class
