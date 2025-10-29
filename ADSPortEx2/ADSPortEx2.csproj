@@ -46,6 +46,10 @@
     <Compile Include="AVLTree.cs" />
     <Compile Include="BinTree.cs" />
     <Compile Include="BSTree.cs" />
+    <Compile Include="MenuSystem\ConsoleMenuItem.cs" />
+    <Compile Include="MenuSystem\IMenuItem.cs" />
+    <Compile Include="MenuSystem\MenuItemStack.cs" />
+    <Compile Include="MenuSystem\MenuOperation.cs" />
     <Compile Include="VideoGame.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
