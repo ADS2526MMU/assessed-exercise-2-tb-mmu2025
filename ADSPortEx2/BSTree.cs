@@ -4,6 +4,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ADSPortEx2
 {
@@ -36,7 +37,7 @@ namespace ADSPortEx2
 
         public int Height()
         {
-            throw new NotImplementedException();
+            return HeightRecursive(root);
         }
 
         public T EarlieseGame()
@@ -85,6 +86,24 @@ namespace ADSPortEx2
             }
         }
 
+        private int HeightRecursive(Node<T> node, int depth = 0)
+        {
+            if(node == null)
+            {
+                return 0;
+            }
+
+            if (node.IsLeaf())
+            {
+                return depth;
+            }
+            else
+            {
+                int leftHeight = HeightRecursive(node.Left, depth + 1);
+                int rightHeight = HeightRecursive(node.Right, depth + 1);
+                return (leftHeight > rightHeight) ? leftHeight : rightHeight;
+            }
+        }
 
     }// End of class
 }
