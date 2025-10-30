@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +18,20 @@ namespace ADSPortEx2
 
         public BSTree()
         {
-            throw new NotImplementedException();
+            root = null;
         }
 
         //Functions for EX.2A
         public void InsertItem(T item)
         {
-            throw new NotImplementedException();
+            if (root == null)
+            {
+                root = new Node<T>(item);
+            }
+            else
+            {
+                InsertItemRecursive(root, item);
+            }
         }
 
         public int Height()
@@ -51,7 +59,31 @@ namespace ADSPortEx2
         //Free space, use as necessary to address task requirements... 
 
 
-
+        private void InsertItemRecursive(Node<T> node, T item)
+        {
+            int compareValue = node.Data.CompareTo(item);
+            if (compareValue == 0)
+            {
+                throw new Exception("Could not insert item, value already exists in tree");
+            }
+            else if (compareValue == 1) {
+                if (node.Right == null)
+                {
+                    node.Right = new Node<T>(item);
+                    return;
+                }
+                InsertItemRecursive(node.Right, item);
+            } 
+            else 
+            {
+                if (node.Left == null)
+                {
+                    node.Left = new Node<T>(item);
+                    return;
+                }
+                InsertItemRecursive(node.Left, item);
+            }
+        }
 
 
     }// End of class
