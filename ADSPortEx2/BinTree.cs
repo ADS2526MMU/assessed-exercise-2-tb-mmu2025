@@ -37,7 +37,9 @@ namespace ADSPortEx2
 
         public void PreOrder(ref string buffer)
         {
+            buffer = "[";
             PreOrderRecursive(root, ref buffer);
+            buffer += "]";
         }
 
         public void PostOrder(ref string buffer)
@@ -74,7 +76,29 @@ namespace ADSPortEx2
 
         private void PreOrderRecursive(Node<T> node, ref string buffer)
         {
-            throw new NotImplementedException();
+            if (node == null) { return; }
+            buffer += "[";
+            if (node.IsLeaf())
+            {
+                buffer += node.ToString();
+            }
+            else
+            {
+                buffer += "[";
+                buffer += node.ToString();
+                buffer += "]";
+
+                if (node.Left != null)
+                {
+                    PreOrderRecursive(node.Left, ref buffer);
+                }
+                
+                if (node.Right != null)
+                {
+                    PreOrderRecursive(node.Right, ref buffer);
+                }
+            }
+            buffer += "]";
         }
 
         private void PostOrderRecursive(Node<T> node, ref string buffer)
