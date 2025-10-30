@@ -18,34 +18,47 @@ namespace ADSPortEx2
 
         public BinTree()
         {
-            throw new NotImplementedException();
+            root = null;
         }
 
         public BinTree(Node<T> node)
         {
-            throw new NotImplementedException();
+            root = node;
         }
 
 
         //Functions for EX.2A
         public void InOrder(ref string buffer)
         {
-            throw new NotImplementedException();
+            InOrderRecursive(root, ref buffer);
         }
 
         public void PreOrder(ref string buffer)
         {
-            throw new NotImplementedException();
+            PreOrderRecursive(root, ref buffer);
         }
 
         public void PostOrder(ref string buffer)
         {
-            throw new NotImplementedException();
+            PostOrderRecursive(root, ref buffer);
         }
 
         //Free space, use as necessary to address task requirements... 
 
+        private void InOrderRecursive(Node<T> node,ref string buffer)
+        {
+            throw new NotImplementedException();
+        }
 
+        private void PreOrderRecursive(Node<T> node, ref string buffer)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PostOrderRecursive(Node<T> node, ref string buffer)
+        {
+            throw new NotImplementedException();
+        }
 
 
 
