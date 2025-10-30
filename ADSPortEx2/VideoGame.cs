@@ -88,5 +88,10 @@ namespace ADSPortEx2
             throw new ArgumentException("Paramater Must be of type VideoGame");
         }
 
+        public override string ToString()
+        {
+            return String.Format("Title:{0} Developer:{1} Year of Release:{2}", Title, Developer, Releaseyear);
+        } 
+
     }// End of class
 }
