@@ -14,6 +14,7 @@ namespace ADSPortEx2
 
     class BinTree<T> where T : IComparable
     {
+        protected Node<T> root;
 
         public BinTree()
         {
