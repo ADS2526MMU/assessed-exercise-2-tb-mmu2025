@@ -103,7 +103,29 @@ namespace ADSPortEx2
 
         private void PostOrderRecursive(Node<T> node, ref string buffer)
         {
-            throw new NotImplementedException();
+            if (node == null) { return; }
+            buffer += "[";
+            if (node.IsLeaf())
+            {
+                buffer += node.ToString();
+            }
+            else
+            {
+                if (node.Left != null)
+                {
+                    PostOrderRecursive(node.Left, ref buffer);
+                }
+
+                if (node.Right != null)
+                {
+                    PostOrderRecursive(node.Right, ref buffer);
+                }
+
+                buffer += "[";
+                buffer += node.ToString();
+                buffer += "]";
+            }
+            buffer += "]";
         }
 
 
