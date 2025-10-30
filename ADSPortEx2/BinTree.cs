@@ -30,7 +30,9 @@ namespace ADSPortEx2
         //Functions for EX.2A
         public void InOrder(ref string buffer)
         {
+            buffer = "[";
             InOrderRecursive(root, ref buffer);
+            buffer += "]";
         }
 
         public void PreOrder(ref string buffer)
@@ -47,7 +49,27 @@ namespace ADSPortEx2
 
         private void InOrderRecursive(Node<T> node,ref string buffer)
         {
-            throw new NotImplementedException();
+            if (node == null) { return; }
+            buffer += "[";
+            if (node.IsLeaf()) 
+            { 
+                buffer += node.ToString(); 
+            }
+            else
+            {
+                if(node.Left != null)
+                {
+                    InOrderRecursive(node.Left, ref buffer);
+                }
+                buffer += "[";
+                buffer += node.ToString();
+                buffer += "]";
+                if(node.Right != null)
+                {
+                    InOrderRecursive(node.Right, ref buffer);
+                }
+            }
+            buffer += "]";
         }
 
         private void PreOrderRecursive(Node<T> node, ref string buffer)
