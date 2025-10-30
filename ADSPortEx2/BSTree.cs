@@ -42,7 +42,13 @@ namespace ADSPortEx2
 
         public T EarlieseGame()
         {
-            throw new NotImplementedException();
+            Node<T> tempNode = null;
+            int value = OldestGameRecursive(root, ref tempNode);
+            if (tempNode == null)
+            {
+                throw new Exception("Could not find earliest game");
+            }
+            return tempNode.Data;
         }
 
         //Functions for EX.2B
@@ -102,6 +108,31 @@ namespace ADSPortEx2
                 int leftHeight = HeightRecursive(node.Left, depth + 1);
                 int rightHeight = HeightRecursive(node.Right, depth + 1);
                 return (leftHeight > rightHeight) ? leftHeight : rightHeight;
+            }
+        }
+
+        private int OldestGameRecursive(Node<T> node, ref Node<T> oldestGameNode, int oldest = int.MaxValue)
+        {
+            if (node == null)
+            {
+                return oldest;
+            }
+
+            if(node.Data is VideoGame gameData)
+            {
+                if(gameData.Releaseyear < oldest)
+                {
+                    oldest = gameData.Releaseyear;
+                    oldestGameNode = node;
+                }
+
+                oldest = OldestGameRecursive(node.Left,ref oldestGameNode, oldest);
+                oldest = OldestGameRecursive(node.Right,ref oldestGameNode, oldest);
+                return oldest;
+            }
+            else
+            {
+                throw new NotImplementedException();
             }
         }
 
