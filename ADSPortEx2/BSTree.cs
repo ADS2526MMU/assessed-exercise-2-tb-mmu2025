@@ -95,7 +95,7 @@ namespace ADSPortEx2
 
             if (node.IsLeaf())
             {
-                return depth;
+                return depth+1;
             }
             else
             {
