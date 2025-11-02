@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MenuSystem;
 
 namespace ADSPortEx2
 {
@@ -11,17 +12,22 @@ namespace ADSPortEx2
         static void Main(string[] args)
         {
 
+            BSTree<VideoGame> tree = new BSTree<VideoGame>();
+            ConsoleMenuItem<BSTree<VideoGame>> consoleMenu = new ConsoleMenuItem<BSTree<VideoGame>>(10,"Main","Main");
+            ConsoleMenuItem<BSTree<VideoGame>> consoleMenuDisplay = new ConsoleMenuItem<BSTree<VideoGame>>(10, "Display", "Display Tree", true);
 
-            //Create a Menu driven interface here so a user can interact with your implementations
+            consoleMenuDisplay.AddMenuItemThrow(new MenuOperation<BSTree<VideoGame>>("Pre Order"));
+            consoleMenuDisplay.AddMenuItemThrow(new MenuOperation<BSTree<VideoGame>>("In Order"));
+            consoleMenuDisplay.AddMenuItemThrow(new MenuOperation<BSTree<VideoGame>>("Post Order"));
+            
 
-            //I.e. while(true){
-            // print to user - "Select an option"
-            // "1. Add item to tree"
-            // "2. Display all items... ect
-            //}
+            consoleMenu.AddMenuItemThrow(new MenuOperation<BSTree<VideoGame>>("Insert New Game"));
+            consoleMenu.AddMenuItemThrow(consoleMenuDisplay);
+            consoleMenu.AddMenuItemThrow(new MenuOperation<BSTree<VideoGame>>("Get Earliest Release"));
+            consoleMenu.AddMenuItemThrow(new MenuOperation<BSTree<VideoGame>>("Get Tree Height"));
 
 
-
+            consoleMenu.Run(tree);
 
             Console.ReadLine();
 
