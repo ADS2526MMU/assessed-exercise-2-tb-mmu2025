@@ -30,16 +30,12 @@ namespace ADSPortEx2
         //Functions for EX.2A
         public void InOrder(ref string buffer)
         {
-            buffer = "[";
             InOrderRecursive(root, ref buffer);
-            buffer += "]";
         }
 
         public void PreOrder(ref string buffer)
         {
-            buffer = "[";
             PreOrderRecursive(root, ref buffer);
-            buffer += "]";
         }
 
         public void PostOrder(ref string buffer)
@@ -51,81 +47,75 @@ namespace ADSPortEx2
 
         private void InOrderRecursive(Node<T> node,ref string buffer)
         {
-            if (node == null) { return; }
-            buffer += "[";
-            if (node.IsLeaf()) 
-            { 
-                buffer += node.ToString(); 
+            if (node == null)
+            {
+                return;
+            }
+            if (node.IsLeaf())
+            {
+                buffer += "[";
+                buffer += node.ToString();
+                buffer += "]\n";
             }
             else
             {
-                if(node.Left != null)
-                {
-                    InOrderRecursive(node.Left, ref buffer);
-                }
+                InOrderRecursive(node.Left, ref buffer);
+
                 buffer += "[";
                 buffer += node.ToString();
-                buffer += "]";
-                if(node.Right != null)
-                {
-                    InOrderRecursive(node.Right, ref buffer);
-                }
+                buffer += "]\n";
+
+                InOrderRecursive(node.Right, ref buffer);
+
             }
-            buffer += "]";
         }
 
         private void PreOrderRecursive(Node<T> node, ref string buffer)
         {
-            if (node == null) { return; }
-            buffer += "[";
+            if (node == null)
+            {
+                return;
+            }
             if (node.IsLeaf())
             {
+                buffer += "[";
                 buffer += node.ToString();
+                buffer += "]\n";
             }
             else
             {
                 buffer += "[";
                 buffer += node.ToString();
-                buffer += "]";
+                buffer += "]\n";
 
-                if (node.Left != null)
-                {
-                    PreOrderRecursive(node.Left, ref buffer);
-                }
-                
-                if (node.Right != null)
-                {
-                    PreOrderRecursive(node.Right, ref buffer);
-                }
+                PreOrderRecursive(node.Left, ref buffer);
+
+                PreOrderRecursive(node.Right, ref buffer);
             }
-            buffer += "]";
         }
 
         private void PostOrderRecursive(Node<T> node, ref string buffer)
         {
-            if (node == null) { return; }
-            buffer += "[";
+            if (node == null)
+            {
+                return;
+            }
             if (node.IsLeaf())
             {
+                buffer += "[";
                 buffer += node.ToString();
+                buffer += "]\n";
             }
             else
             {
-                if (node.Left != null)
-                {
-                    PostOrderRecursive(node.Left, ref buffer);
-                }
+                PostOrderRecursive(node.Left, ref buffer);
 
-                if (node.Right != null)
-                {
-                    PostOrderRecursive(node.Right, ref buffer);
-                }
+                PostOrderRecursive(node.Right, ref buffer);
 
                 buffer += "[";
                 buffer += node.ToString();
-                buffer += "]";
+                buffer += "]\n";
             }
-            buffer += "]";
         }
 
 

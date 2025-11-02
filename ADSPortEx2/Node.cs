@@ -44,7 +44,7 @@ namespace ADSPortEx2
 
         public bool IsLeaf()
         {
-            return left != null && right != null;
+            return (left == null) && (right == null);
         }
 
         public override string ToString()

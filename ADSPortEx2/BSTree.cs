@@ -43,7 +43,7 @@ namespace ADSPortEx2
         public T EarlieseGame()
         {
             Node<T> tempNode = null;
-            int value = OldestGameRecursive(root, ref tempNode);
+            OldestGameRecursive(root, ref tempNode);
             if (tempNode == null)
             {
                 throw new Exception("Could not find earliest game");
@@ -73,7 +73,7 @@ namespace ADSPortEx2
             {
                 throw new Exception("Could not insert item, value already exists in tree");
             }
-            else if (compareValue == 1) {
+            else if (compareValue < 0) {
                 if (node.Right == null)
                 {
                     node.Right = new Node<T>(item);
